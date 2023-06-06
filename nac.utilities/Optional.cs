@@ -60,6 +60,20 @@ public class Optional<T>
     }
 
 
+    /*
+     Make it possible to do comparrisons
+     */
+    public static bool operator ==(Optional<T> a, T b)
+    {
+        return a.IsSet == true && EqualityComparer<T>.Default.Equals(a.Value, b);
+    }
+
+    public static bool operator !=(Optional<T> a, T b)
+    {
+        return !(a == b); // just do the oposite of what we defined above
+    }
+
+
     public Optional()
     {
         this.internalIsSet = false;
