@@ -16,4 +16,16 @@ public class OptionalTest
 
         Assert.IsTrue(myNumber.IsSet);
     }
+
+
+    [TestMethod]
+    public void StringTesting()
+    {
+        Optional<string> myText = "Apple";
+
+        Assert.IsTrue(string.Equals("Apple", myText.Value, System.StringComparison.OrdinalIgnoreCase));
+        Assert.IsTrue(myText.IsSet);
+    }
+
+
 }
