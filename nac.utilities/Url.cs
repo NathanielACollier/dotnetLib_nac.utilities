@@ -13,6 +13,14 @@ public class Url
         this.builder = new UriBuilder(uri: uri);
     }
 
+    public string Path {
+        get {
+            return this.builder.Path;
+        } set {
+            this.builder.Path = value;
+        }
+    }
+
 
     public Url Clone()
     {
