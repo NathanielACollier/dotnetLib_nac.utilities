@@ -20,22 +20,22 @@ public class UrlTest
     [TestMethod]
     public void AddQueryParametersFromText()
     {
-        var url = new nac.utilities.Url("https://ccms.ecark.org");
+        var url = new nac.utilities.Url("https://www.google.com");
 
         url.AddQueryParametersFromText("where1=%22Attr_115749_2%22%3a%22Microsoft%22");
             
-        Assert.IsTrue(string.Equals(url.ToString(), "https://ccms.ecark.org/?where1=%22Attr_115749_2%22%3a%22Microsoft%22",StringComparison.OrdinalIgnoreCase));
+        Assert.IsTrue(string.Equals(url.ToString(), "https://www.google.com/?where1=%22Attr_115749_2%22%3a%22Microsoft%22",StringComparison.OrdinalIgnoreCase));
     }
 
 
     [TestMethod]
     public void AddQueryParametersFromTextWithDuplicateQueryParams()
     {
-        var url = new nac.utilities.Url("https://ccms.ecark.org");
+        var url = new nac.utilities.Url("https://www.google.com");
         url.AddQuery("q1", "Apple Sauce");
         url.AddQuery("q1", "Bacon");
             
-        Assert.IsTrue(string.Equals(url.ToString(), "https://ccms.ecark.org/?q1=Apple+Sauce&q1=Bacon", StringComparison.OrdinalIgnoreCase));
+        Assert.IsTrue(string.Equals(url.ToString(), "https://www.google.com/?q1=Apple+Sauce&q1=Bacon", StringComparison.OrdinalIgnoreCase));
     }
 
 
