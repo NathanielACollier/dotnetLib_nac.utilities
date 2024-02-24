@@ -39,5 +39,17 @@ public class UrlTest
     }
 
 
+    [TestMethod]
+    public void CloneUrlWithQueryParams(){
+        var url = new nac.utilities.Url("https://google.com:8090/test/test/test/index.php");
+        url.AddQuery("k", "test");
+
+        string originalUrl = url.ToString(); // compare against this one
+
+        Assert.IsTrue(originalUrl.Contains(":8090"), "Port was missing from original URL");
+
+        var copyUrl = url.Clone();
+        Assert.IsTrue(string.Equals(copyUrl.ToString(), originalUrl), "Copy unmodified did not match original URL");
+    }
 
 }
