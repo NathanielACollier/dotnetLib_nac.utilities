@@ -5,7 +5,7 @@
 	  <LangVersion>latestmajor</LangVersion>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <Version>1.0.2</Version>
+	  <Version>1.0.3</Version>
 	  <Description>A place to put dependencies that don't fit anywhere else</Description>
   </PropertyGroup>
 
