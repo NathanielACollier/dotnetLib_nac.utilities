@@ -1,12 +1,12 @@
-$buildConfigurationName = "Debug"
 
+$buildConfigurationName = "Release"
 
-$scriptParentFolderPath = [System.IO.Path]::GetDirectoryName( $MyInvocation.InvocationName )
+$projectFileInfo = Get-ChildItem -Path $PSScriptRoot | where { $_.Extension -eq ".csproj"} | select -First 1  
+Write-Host "Project file " $projectFileInfo.FullName
+& dotnet @("publish", $projectFileInfo.FullName,"-c", $buildConfigurationName)
 
-$buildPath = [system.io.path]::Combine( $scriptParentFolderPath, "bin", $buildConfigurationName)
-$nugetPackages = Get-ChildItem $buildPath -Filter *.nupkg
-$package = $nugetPackages | Sort-Object -Descending -Property CreationTIme | Select-Object -First 1
-
+$package = Get-ChildItem "$PSScriptRoot\bin\$buildConfigurationName\" -Filter *.nupkg | sort-object -Descending -Property LastWriteTime | select -First 1
+Write-Host "Package found " $package.FullName 
 $settings = (Get-Content '~/settings.json' | Out-String | ConvertFrom-Json)
 
 <#
